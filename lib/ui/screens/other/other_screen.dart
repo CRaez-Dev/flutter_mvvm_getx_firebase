@@ -8,7 +8,7 @@ class OtherScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final controller = Get.find<CounterController>();
+    final CounterController controller = Get.find();
 
     return Scaffold(
       body: SafeArea(
