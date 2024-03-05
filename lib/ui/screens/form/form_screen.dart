@@ -1,5 +1,3 @@
-import 'dart:ffi';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_mvvm_getx_firebase/ui/screens/form/form_controller.dart';
 import 'package:get/get.dart';
@@ -50,46 +48,55 @@ class _FormRegistration extends StatelessWidget {
           Expanded(
             child: SingleChildScrollView(
               child: Form(
-                key: _.formKey,
-                child: Column(
-                  children: [
-                    TextFormField(
-                      keyboardType: TextInputType.emailAddress,
-                      decoration: const InputDecoration(
-                        label: Text('Email'),
-                      ),
-                      validator: _.validatorEmail,
-                    ),
-                    const SizedBox(
-                      height: 10,
-                    ),
-                    TextFormField(
-                      keyboardType: TextInputType.text,
-                      decoration: const InputDecoration(
-                        label: Text('Address'),
-                      ),
-                    ),
-                    const SizedBox(
-                      height: 10,
-                    ),
-                    TextFormField(
-                      keyboardType: TextInputType.text,
-                      decoration: const InputDecoration(
-                        label: Text('Passport'),
-                      ),
-                    ),
-                    const SizedBox(
-                      height: 10,
-                    ),
-                  ],
-                ),
-              ),
+                  key: _.formKey,
+                  child: Obx(() {
+                    return Column(
+                      children: [
+                        TextFormField(
+                          keyboardType: TextInputType.emailAddress,
+                          decoration: const InputDecoration(
+                            label: Text('Email'),
+                          ),
+                          validator: _.validatorEmail,
+                          controller: _.formController["email"],
+                          autovalidateMode: AutovalidateMode.onUserInteraction,
+                        ),
+                        const SizedBox(
+                          height: 10,
+                        ),
+                        TextFormField(
+                          keyboardType: TextInputType.text,
+                          decoration: const InputDecoration(
+                            label: Text('Address'),
+                          ),
+                          controller: _.formController["address"],
+                          validator: _.validatorRequired,
+                          autovalidateMode: AutovalidateMode.onUserInteraction,
+                        ),
+                        const SizedBox(
+                          height: 10,
+                        ),
+                        TextFormField(
+                          keyboardType: TextInputType.text,
+                          decoration: const InputDecoration(
+                            label: Text('Passport'),
+                          ),
+                          controller: _.formController["passport"],
+                          validator: _.validatorRequired,
+                          autovalidateMode: AutovalidateMode.onUserInteraction,
+                        ),
+                        const SizedBox(
+                          height: 10,
+                        ),
+                      ],
+                    );
+                  })),
             ),
           ),
-          Container(
+          SizedBox(
               width: double.infinity,
-              color: Colors.amber,
-              child: const FilledButton(onPressed: null, child: Text('Save')))
+              child: Obx(() => FilledButton(
+                  onPressed: _.nextFunction.value, child: const Text('Save'))))
         ],
       ),
     );
