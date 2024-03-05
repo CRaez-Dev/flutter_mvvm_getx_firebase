@@ -82,7 +82,7 @@ class _FormRegistration extends StatelessWidget {
                             label: Text('Passport'),
                           ),
                           controller: _.formController["passport"],
-                          validator: (value) => _.validatorRequired(value,"address") ,
+                          validator: (value) => _.validatorRequired(value,"passport") ,
                           autovalidateMode: AutovalidateMode.onUserInteraction,
                         ),
                         const SizedBox(
