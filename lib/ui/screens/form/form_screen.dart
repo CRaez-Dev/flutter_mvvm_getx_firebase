@@ -57,7 +57,7 @@ class _FormRegistration extends StatelessWidget {
                           decoration: const InputDecoration(
                             label: Text('Email'),
                           ),
-                          validator: _.validatorEmail,
+                          validator: (value) => _.validatorEmail(value,"email"),
                           controller: _.formController["email"],
                           autovalidateMode: AutovalidateMode.onUserInteraction,
                         ),
@@ -70,7 +70,7 @@ class _FormRegistration extends StatelessWidget {
                             label: Text('Address'),
                           ),
                           controller: _.formController["address"],
-                          validator: _.validatorRequired,
+                          validator: (value) => _.validatorRequired(value,"address"),
                           autovalidateMode: AutovalidateMode.onUserInteraction,
                         ),
                         const SizedBox(
@@ -82,7 +82,7 @@ class _FormRegistration extends StatelessWidget {
                             label: Text('Passport'),
                           ),
                           controller: _.formController["passport"],
-                          validator: _.validatorRequired,
+                          validator: (value) => _.validatorRequired(value,"address") ,
                           autovalidateMode: AutovalidateMode.onUserInteraction,
                         ),
                         const SizedBox(
