@@ -22,7 +22,7 @@ class FormController extends GetxController {
   void onInit() {
     super.onInit();
 
-    ever(validateForm, (value) async {
+    ever(validateForm, (value) {
       validateAccomplish();
     });
   }
@@ -36,13 +36,18 @@ class FormController extends GetxController {
         validateForm.update(key, (value) => false);
         return 'Email invalid';
       }
+    } else {
+      if (value != null && GetUtils.isEmail(value)) {
+        validateForm.update(key, (value) => true);
+        return null;
+      } else {
+        validateForm.update(key, (value) => false);
+        return 'Email invalid';
+      }
     }
-
-    return null;
   }
 
   String? validatorRequired(String? value, String key) {
-    // final values = validateForm[key];
     if (validateForm[key] == false) {
       if (value != null && value.isNotEmpty) {
         validateForm.update(key, (value) => true);
@@ -62,22 +67,18 @@ class FormController extends GetxController {
     }
   }
 
-  void validateAccomplish() async {
-    if (validateForm["email"] == true &&
-        validateForm["address"] == true &&
-        validateForm["passport"] == true && await available()
-        ) {
-      nextFunction.value = nextFunctionApply();
-    } else {
-      if (nextFunction.value != null && await available()) {
-        nextFunction.value = null;
+  void validateAccomplish() {
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      if (validateForm["email"] == true &&
+          validateForm["address"] == true &&
+          validateForm["passport"] == true) {
+        nextFunction.value = nextFunctionApply();
+      } else {
+        if (nextFunction.value != null) {
+          nextFunction.value = null;
+        }
       }
-    }
-  }
-
-  Future<bool> available() async {
-    await Future.delayed(const Duration(milliseconds: 10));
-    return true;
+    });
   }
 
   Future<bool> Function() nextFunctionApply() {

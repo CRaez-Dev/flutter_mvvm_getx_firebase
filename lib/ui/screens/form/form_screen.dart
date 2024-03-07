@@ -102,12 +102,3 @@ class _FormRegistration extends StatelessWidget {
     );
   }
 }
-
-
-/**
-
-
-                       
- 
-   
- */
