@@ -2,17 +2,21 @@ import 'package:flutter_mvvm_getx_firebase/ui/screens/form/form_binding.dart';
 import 'package:flutter_mvvm_getx_firebase/ui/screens/form/form_screen.dart';
 import 'package:flutter_mvvm_getx_firebase/ui/screens/home/home_binding.dart';
 import 'package:flutter_mvvm_getx_firebase/ui/screens/home/home_screen.dart';
+import 'package:flutter_mvvm_getx_firebase/ui/screens/navigation/navigation_binding.dart';
+import 'package:flutter_mvvm_getx_firebase/ui/screens/navigation/navigation_screen.dart';
 import 'package:get/get.dart';
 import 'package:flutter_mvvm_getx_firebase/ui/screens/counter/counter_binding.dart';
 import 'package:flutter_mvvm_getx_firebase/ui/screens/counter/counter_screen.dart';
 import 'package:flutter_mvvm_getx_firebase/ui/screens/other/other_screen.dart';
 
 class AppRoutes {
-  static const String formRoute = '/';
-  static const String homeRoute = '/home';
+  static const String homeRoute = '/';
+  static const String formRoute = '/form';
+  static const String navigationRoute = '/navigation';
   static const String counterRoute = '/counter';
   static const String otherRoute = '/other';
 
+  static const String initialRoute = navigationRoute;
 
   static final routes = <GetPage>[
     GetPage(
@@ -31,5 +35,9 @@ class AppRoutes {
         name: formRoute,
         page: () => const FormScreen(),
         binding: FormBinding()),
+    GetPage(
+        name: navigationRoute,
+        page: () => const NavigationScreen(),
+        binding: NavigationBinding()),
   ];
 }

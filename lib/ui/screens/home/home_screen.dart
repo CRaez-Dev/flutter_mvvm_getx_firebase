@@ -10,22 +10,42 @@ class HomeScreen extends StatelessWidget {
     return GetBuilder<HomeController>(
       builder: (controller) {
         return Scaffold(
-            appBar: AppBar(
-              title: const Text('Cinemark Clone'),
-            ),
-            body: SafeArea(
-              child: controller.listMovies.isEmpty
+          appBar: AppBar(
+            title: const Text('Cinemark Clone'),
+          ),
+          body: SafeArea(
+            child: Obx(
+              () => controller.listMovies.isEmpty
                   ? const Center(
                       child: CircularProgressIndicator(
                       strokeWidth: 2,
                     ))
-                  : ListView.builder(
-                      itemCount: controller.listMovies.length,
-                      itemBuilder: (context, index) {
-                        return Text(controller.listMovies[index].name);
-                      },
-                    ),
-            ));
+                  : const _HomeView(),
+            ),
+          ),
+        );
+      },
+    );
+  }
+}
+
+class _HomeView extends StatelessWidget {
+  const _HomeView();
+
+  @override
+  Widget build(BuildContext context) {
+    final controller = Get.find<HomeController>();
+
+    return ListView.builder(
+      itemCount: controller.listMovies.length,
+      itemBuilder: (context, index) {
+        final movie = controller.listMovies[index];
+        return Stack(
+          children: [
+            Image.network(movie.bannerUrl),
+            Text(movie.name),
+          ],
+        );
       },
     );
   }
