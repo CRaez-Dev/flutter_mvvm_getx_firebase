@@ -10,10 +10,15 @@ class Navigation2Screen extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetBuilder<Navigation2Controller>(
       builder: (_) {
-        return const Scaffold(
-          body: Placeholder(),
+        return Scaffold(
+          body: Obx(
+            () => IndexedStack(
+              index: _.currentIndex.value,
+              children: _.navigationPages,
+            ),
+          ),
           extendBody: true,
-          bottomNavigationBar: CustomBottomNavigationBar(),
+          bottomNavigationBar: const CustomBottomNavigationBar(),
         );
       },
     );

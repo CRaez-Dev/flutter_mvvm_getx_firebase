@@ -17,7 +17,7 @@ class CustomBottomNavigationBar extends StatelessWidget {
              Radius.circular(25),            
           ),
         ),
-        margin: const EdgeInsets.symmetric(horizontal: 16),
+        margin: const EdgeInsets.only(left: 16,right: 16,bottom: 16),
         padding: const EdgeInsets.symmetric(horizontal: 16),
         child: Obx(
           () => BottomNavigationBar(
