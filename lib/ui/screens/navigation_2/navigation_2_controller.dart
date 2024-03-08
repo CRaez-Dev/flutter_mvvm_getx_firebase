@@ -11,7 +11,7 @@ class Navigation2Controller extends GetxController {
   List<Widget> navigationPages = <Widget>[
     const HomeView(),
     const FolderView(),
-    ProfileView(),
+    const ProfileView(),
     const PetView(),
   ];
 

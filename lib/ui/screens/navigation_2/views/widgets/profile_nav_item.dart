@@ -1,13 +1,15 @@
 import 'package:flutter/material.dart';
 
-class ProfileNavitem extends StatelessWidget {
-  final String name;
-  final void Function() onPressed;
+typedef FutureCallback = Future<void> Function();
 
-  const ProfileNavitem({
+class ProfileNavItem extends StatelessWidget {
+  final String name;
+  final FutureCallback onHandlePressed;
+
+  const ProfileNavItem({
     super.key,
     required this.name,
-    required this.onPressed,
+    required this.onHandlePressed,
   });
 
   @override
@@ -25,7 +27,7 @@ class ProfileNavitem extends StatelessWidget {
                 borderRadius: BorderRadius.all(Radius.circular(8)),
               ),
             )),
-        onPressed: () => onPressed,
+        onPressed: onHandlePressed.call,
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 14),
           child: Row(
