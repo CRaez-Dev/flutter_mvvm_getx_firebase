@@ -14,6 +14,7 @@ class Navigation2Controller extends GetxController {
     const ProfileView(),
     const PetView(),
   ];
+  
 
 
 // BottonNavigation methods

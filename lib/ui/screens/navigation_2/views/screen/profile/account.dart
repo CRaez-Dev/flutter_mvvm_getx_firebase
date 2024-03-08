@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class Account extends StatelessWidget {
   static const String route = '/account';
@@ -6,8 +7,18 @@ class Account extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Center(
-      child: Text('Profile/Account'),
+    return Scaffold(
+      appBar: AppBar(
+        title: Text(
+          'Cuenta',
+          style: GoogleFonts.poppins(
+              textStyle: const TextStyle(
+                  fontWeight: FontWeight.w600, fontSize: 24, height: 32)),
+        ),
+      ),
+      body: const Center(
+        child: Text('Profile/Account'),
+      ),
     );
   }
 }

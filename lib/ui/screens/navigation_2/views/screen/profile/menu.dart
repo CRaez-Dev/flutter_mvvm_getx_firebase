@@ -68,9 +68,11 @@ class Menu extends StatelessWidget {
                         ProfileNavItem(
                           name: option.name,
                           onHandlePressed: () async {
-                            print('object');
-                            await navigate(context, option.route,
-                                isRootNavigator: false);
+                            await navigate(
+                              context,
+                              option.route,
+                              isRootNavigator: false,
+                            );
                           },
                         ),
                         SizedBox(

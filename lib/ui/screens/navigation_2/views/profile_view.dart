@@ -4,7 +4,7 @@ import 'package:flutter_mvvm_getx_firebase/ui/screens/navigation_2/views/screen/
 import 'package:flutter_mvvm_getx_firebase/ui/screens/navigation_2/views/screen/profile/menu.dart';
 
 class ProfileView extends StatelessWidget {
-  final Key menuKey = const Key('/');
+  static GlobalKey<NavigatorState> menuKey = GlobalKey<NavigatorState>();
 
   const ProfileView({super.key});
 
