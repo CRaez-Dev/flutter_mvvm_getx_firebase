@@ -82,8 +82,7 @@ class FormController extends GetxController {
   }
 
   Future<bool> Function() nextFunctionApply() {
-    return () async {
-      print('Test');
+    return () async {      
       return true;
     };
   }

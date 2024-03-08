@@ -8,7 +8,7 @@ class MovieMapper {
       name: movieDb.title, 
       synopsis: movieDb.synopsis, 
       duration: int.parse(movieDb.runtime) , 
-      bannerUrl: movieDb.corporateFilmId != "" ? '${Environment.cinema1BaseImageUrl}300x400/${movieDb.corporateFilmId}.jpg' : 'no-poster', 
+      bannerUrl: movieDb.corporateFilmId != "" ? '${Environment.cinema1BaseImageUrl}/300x400/${movieDb.corporateFilmId}.jpg' : 'no-poster', 
       rating: movieDb.rating,
       );
   } 

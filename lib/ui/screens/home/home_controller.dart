@@ -15,7 +15,7 @@ class HomeController extends GetxController {
   void setUp() async {
     final repository = Get.find<MovieRepository>();
     listMovies.addAll((await GetMoviesByCinemaId(repository).execute(id: 600)).toList());
-    update();    
+    // update();    
   }
 
 }
